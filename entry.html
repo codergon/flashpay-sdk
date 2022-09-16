@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ABCD</title>
+  </head>
+  <body>
+    <button id="btn-me">Paay!</button>
+    <script src="./bundle/bundle.min.js"></script>
+  <script>
+    const btn = document.querySelector("#btn-me");
+    btn.onclick = (e) => {
+      const fp = new window.FlashPay("testnet");
+      fp.setup({asset: 0, recipient: "ABCD", amount: "1000", network: "testnet", txn_type: "normal",}, "NDNDNDI", (res) => {console.log(res)},);
+    }
+  </script>
+  </body>
+</html>
