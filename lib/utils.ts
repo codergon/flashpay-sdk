@@ -2,14 +2,14 @@ import { PeraWalletConnect } from "@perawallet/connect";
 import { IWallet } from "./interface";
 import MyAlgoWallet from "@randlabs/myalgo-connect";
 import { Algodv2 } from "algosdk";
-import { algodClient } from "./constants";
+import { ALGOD_CLIENT } from "./constants";
 
 export class Pera implements IWallet {
   public readonly wallet = new PeraWalletConnect();
   private readonly client: Algodv2;
 
   constructor(network: string) {
-    this.client = algodClient[network];
+    this.client = ALGOD_CLIENT[network];
   }
 
   async connect(): Promise<string> {
@@ -50,7 +50,7 @@ export class MyAlgo implements IWallet {
   private readonly client: Algodv2;
 
   constructor(network: string) {
-    this.client = algodClient[network];
+    this.client = ALGOD_CLIENT[network];
   }
 
   async connect(): Promise<string> {
@@ -67,43 +67,6 @@ export class MyAlgo implements IWallet {
   async signTransaction(txn: any): Promise<string> {
     try {
       const signedTxn = await this.wallet.signTransaction(txn.toByte());
-      return await this.client.sendRawTransaction(signedTxn.blob).do();
-    } catch (err: any) {
-      throw new Error(err.message);
-    }
-  }
-}
-
-export class AlgoSigner implements IWallet {
-  //@ts-ignore
-  public readonly wallet = window.AlgoSigner;
-  private readonly client: Algodv2;
-
-  constructor(network: string) {
-    this.client = algodClient[network];
-  }
-
-  async connect(): Promise<string> {
-    try {
-      if (typeof this.wallet === "undefined") {
-        window.open(
-          "https://chrome.google.com/webstore/detail/algosigner/kmmolakhbgdlpkjkcjkebenjheonagdm",
-          "_blank",
-        );
-        return "";
-      } else {
-        await this.wallet.connect({ ledger: "TestNet" });
-        const accounts = await this.wallet.accounts({ ledger: "TestNet" });
-        return accounts[0].address;
-      }
-    } catch (err: any) {
-      throw new Error(err.message);
-    }
-  }
-
-  async signTransaction(txn: any): Promise<string> {
-    try {
-      const signedTxn = await this.wallet.signTxn(txn.toByte());
       return await this.client.sendRawTransaction(signedTxn.blob).do();
     } catch (err: any) {
       throw new Error(err.message);

@@ -131,7 +131,7 @@ export const MODAL_CONTENT = `
     <body>
         <div class="list-group list-group-radio d-grid gap-2 border-0 w-auto">
             <div class="position-relative">
-                <input class="form-check-input position-absolute top-50 end-0 me-3 fs-5" type="radio" name="pera" id="pera" onclick="setSelectedWallet('pera')">
+                <input class="form-check-input position-absolute top-50 end-0 me-3 fs-5" type="radio" name="pera" id="pera">
                 <label class="list-group-item py-3 pe-5" for="listGroupRadioGrid1">
                 <strong class="fw-semibold">PERA WALLET</strong>
                 <span class="d-block small opacity-75">With support text underneath to add more detail</span>
@@ -139,22 +139,14 @@ export const MODAL_CONTENT = `
             </div>
 
             <div class="position-relative">
-                <input class="form-check-input position-absolute top-50 end-0 me-3 fs-5" type="radio" name="listGroupRadioGrid" id="myAlgo" onclick="setSelectedWallet('myAlgo')">
+                <input class="form-check-input position-absolute top-50 end-0 me-3 fs-5" type="radio" name="listGroupRadioGrid" id="myAlgo">
                 <label class="list-group-item py-3 pe-5" for="listGroupRadioGrid2">
                 <strong class="fw-semibold">MY ALGO WALLET</strong>
                 <span class="d-block small opacity-75">Some other text goes here</span>
                 </label>
             </div>
-
-            <div class="position-relative">
-                <input class="form-check-input position-absolute top-50 end-0 me-3 fs-5" type="radio" name="listGroupRadioGrid" id="algoSigner" onclick="setSelectedWallet('algoSigner')">
-                <label class="list-group-item py-3 pe-5" for="listGroupRadioGrid3">
-                <strong class="fw-semibold">ALGOSIGNER</strong>
-                <span class="d-block small opacity-75">And we end with another snippet of text</span>
-                </label>
-            </div>
             <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="submit" id="connect-wallet-button" onclick="handleWalletConnect()">Continue</button>
+                <button class="btn btn-primary" type="submit" id="connect-wallet-button">Continue</button>
             </div>
         </div>
 
