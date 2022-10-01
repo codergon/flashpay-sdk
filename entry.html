@@ -7,12 +7,24 @@
   <body>
     <button id="btn-me">Paay!</button>
     <script src="./bundle/bundle.min.js"></script>
-  <script>
-    const btn = document.querySelector("#btn-me");
-    btn.onclick = (e) => {
-      const fp = new window.FlashPay("testnet");
-      fp.setup({asset: 0, recipient: "ABCD", amount: "1000", network: "testnet", txn_type: "normal",}, "NDNDNDI", (res) => {console.log(res)},);
-    }
-  </script>
+    <script>
+      const btn = document.querySelector("#btn-me");
+      btn.onclick = (e) => {
+        const fp = new window.FlashPay("mainnet");
+        fp.setup(
+          {
+            asset: 0,
+            recipient:
+              "4PFBQOUG4AQPAIYEYOIVOOFCQXYUPVVW3UECD5MS3SEOM64LOWB5GFWDZM",
+            amount: "100",
+            txn_type: "normal",
+          },
+          "pk_test_19e91a5fff3797d4be08361ea990bb50feb330e2d3c7015f58e57805c5d615f9",
+          (res) => {
+            console.log(res);
+          },
+        );
+      };
+    </script>
   </body>
 </html>

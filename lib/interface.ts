@@ -20,7 +20,6 @@ export interface IRequestData {
   asset: number;
   recipient: string;
   amount: string;
-  network: "testnet" | "mainnet";
   txn_type: "payment_link" | "normal";
   payment_link?: string;
 }
@@ -35,4 +34,9 @@ export interface IWallet {
   wallet: any;
   connect(): Promise<string>;
   signTransaction(txn: any): Promise<string>;
+}
+
+export enum WalletType {
+  pera = "pera",
+  myAlgo = "myAlgo",
 }
