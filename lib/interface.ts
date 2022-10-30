@@ -1,4 +1,5 @@
-import { Algodv2 } from "algosdk";
+import { Algodv2, Transaction } from "algosdk";
+import { AxiosInstance } from "axios";
 
 export type ResponseData = {
   [key: string]: string[] | string;
@@ -9,7 +10,7 @@ export type Data = {
 };
 
 export type callable = {
-  (txnId: string): any;
+  (txnId: string, error?: Error): any;
 };
 
 export type ClientObj = {
@@ -32,11 +33,23 @@ export interface IResponseData {
 
 export interface IWallet {
   wallet: any;
-  connect(): Promise<string>;
+  connect(setModalType: any): Promise<string>;
   signTransaction(txn: any): Promise<string>;
+  disconnect(): Promise<void>;
 }
 
 export enum WalletType {
   pera = "pera",
-  myAlgo = "myAlgo",
+  myAlgo = "myAlgo"
+}
+
+// UI TYPES
+
+export interface FlashpayModalsProps {
+  payload: IRequestData;
+  processKey: string;
+  network: string;
+  onCallback: callable;
+  createTransaction: (data: Data) => Promise<Transaction>;
+  axiosJs: AxiosInstance;
 }

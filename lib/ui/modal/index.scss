@@ -1,0 +1,235 @@
+.flashpay-modal {
+  @font-face {
+    font-family: "GeneralSans-Regular";
+    src: url("./assets/fonts/GeneralSans-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "GeneralSans-Medium";
+    src: url("./assets/fonts/GeneralSans-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-display: swap;
+    font-style: normal;
+  }
+
+  // VARIABLES
+  $bgColor: #fff;
+  $subColor: #6d6d6d;
+  $zIndex: 9999 * 9999;
+  $sans: "GeneralSans-Regular", sans-serif;
+  $sansmed: "GeneralSans-Medium", sans-serif;
+
+  // MIXINS
+  @mixin mobile {
+    @media (max-width: 570px) {
+      @content;
+    }
+  }
+
+  // RESET
+  * {
+    box-sizing: border-box;
+  }
+  div,
+  button {
+    display: flex;
+    flex-direction: column;
+  }
+  p {
+    margin: 0px;
+    padding: 0px;
+  }
+  a,
+  input,
+  button {
+    border: none;
+    outline: 0;
+    color: inherit;
+    background: transparent;
+    &:focus {
+      border: none;
+      outline: 0;
+    }
+  }
+
+  // OVERLAY
+  &-overlay {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: $zIndex;
+    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  top: 50%;
+  left: 50%;
+  width: 420px;
+  padding: 28px;
+  display: flex;
+  overflow: auto;
+  font-size: 16px;
+  position: fixed;
+  max-width: 90vw;
+  overflow: hidden;
+  font-family: $sans;
+  border-radius: 10px;
+  height: max-content;
+  background: $bgColor;
+  z-index: $zIndex + 1;
+  box-sizing: border-box;
+  flex-direction: column;
+  max-height: calc(100vh - 30px);
+  transform: translate(-50%, -50%);
+
+  @include mobile {
+    padding: 28px 22px;
+  }
+
+  &__header {
+    margin-bottom: 25px;
+
+    a {
+      color: var(--orient);
+      font-family: $sansmed;
+    }
+    .main {
+      align-items: center;
+      flex-direction: row;
+      margin-bottom: 5px;
+      justify-content: space-between;
+      .flash-logo {
+        height: 22px;
+        width: max-content;
+      }
+      p {
+        font-size: 18px;
+        margin-top: 15px;
+        margin-bottom: 3px;
+        font-family: $sansmed;
+      }
+      .closemodal-x {
+        width: 28px;
+        height: 28px;
+        cursor: pointer;
+        border-radius: 100%;
+        align-items: center;
+        justify-content: center;
+        background: rgba($color: #000, $alpha: 0.03);
+        svg {
+          width: 13px;
+          height: 13px;
+          opacity: 0.7;
+        }
+      }
+    }
+    .sub {
+      color: $subColor;
+    }
+  }
+
+  .modal_illustration {
+    width: 280px;
+    height: 280px;
+    margin: 0px auto;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+
+  .modal_description {
+    gap: 5px;
+    width: 100%;
+    margin-bottom: 15px;
+    p {
+      text-align: center;
+    }
+    .main {
+      font-size: 20px;
+      font-family: $sansmed;
+    }
+    .sub {
+      display: inline;
+      color: $subColor;
+    }
+  }
+
+  .connect_option {
+    gap: 10px;
+    width: 100%;
+    height: 68px;
+    cursor: pointer;
+    padding: 0px 20px;
+    align-items: center;
+    flex-direction: row;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #e8e8e8;
+    justify-content: space-between;
+    .option_info {
+      gap: 10px;
+      align-items: center;
+      flex-direction: row;
+      svg {
+        width: 32px;
+      }
+      p {
+        flex: 1;
+        color: $subColor;
+      }
+    }
+    .option_ticked {
+      width: 20px;
+      height: 20px;
+      overflow: hidden;
+      border-radius: 100%;
+      background: #f0f0f0;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .modal-btns {
+    flex: none;
+    gap: 20px;
+    width: 100%;
+    height: 56px;
+    margin-top: 16px;
+    flex-direction: row;
+    button {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+      align-items: center;
+      border-radius: 10px;
+      font-family: $sansmed;
+      justify-content: center;
+      &.cancel_button {
+        background: #bdbdbd;
+      }
+      &.continue_button {
+        background: #006174;
+      }
+    }
+    @include mobile {
+      gap: 15px;
+      &:not(.wallet-connect) {
+        height: max-content;
+        flex-direction: column-reverse;
+        button {
+          flex: none;
+          width: 100%;
+          height: 56px;
+        }
+      }
+    }
+  }
+}

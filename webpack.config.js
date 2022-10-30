@@ -1,65 +1,49 @@
-// const path = require("path");
-//
-// module.exports = {
-//   entry: "./lib/main.ts",
-//   output: {
-//     filename: "bundle.js",
-//     path: path.resolve(__dirname, "dist"),
-//   },
-//   resolve: {
-//     fallback: {
-//       "crypto": require.resolve("crypto-browserify"),
-//       "stream": require.resolve("stream-browserify"),
-//     },
-//     extensions: [".ts", ".js"]
-//   },
-//   module: {
-//     rules: [
-//       {
-//         test: /\.ts$/,
-//         use: "ts-loader",
-//         include: path.resolve(__dirname, "lib"),
-//       },
-//     ],
-//   },
-// };
+const path = require("path");
+const TerserPlugin = require("terser-webpack-plugin");
 
-
-const path = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
-const production = true;
-
-module.exports = {
-  entry: ['./lib/index.ts'],  //  <- Modify it to your entry name.
+module.exports = (env) => {
+  return {
+  entry: ["./lib/index.ts"],
   module: {
     rules: [
       {
-        test: /\.ts?$/,
-        use: 'ts-loader',
+        test: /\.(ts|tsx)?$/,
+        use: "ts-loader",
         exclude: /node_modules/,
+      },
+      {
+        test: /\.(css|scss)$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg|woff2?|ttf|fnt|webp)$/,
+        type: 'asset/resource',
       },
     ],
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: [".ts", ".js", ".tsx"],
     fallback: {
-      "crypto": require.resolve("crypto-browserify"),
-      "stream": require.resolve("stream-browserify"),
+      crypto: require.resolve("crypto-browserify"),
+      stream: require.resolve("stream-browserify"),
     },
   },
-  mode: 'production',
+  mode: env.production ? "production": "development",
   output: {
-    filename: production ? 'bundle.min.js' : 'bundle.js',
-    path: path.resolve(__dirname, 'bundle'),
-    globalObject: 'this',
-    library: 'FlashPay',
-    libraryExport: 'default',
-    libraryTarget: 'umd'
+    filename: env.production ? "index.min.js" : "index.js",
+    path: path.resolve(__dirname, "build"),
+    globalObject: "this",
+    library: "FlashPay",
+    libraryExport: "default",
+    libraryTarget: "umd",
   },
   optimization: {
-    minimize: production,
-    minimizer: [
-      new TerserPlugin({})
-    ]
-  }
+    minimize: env.production,
+    minimizer: [new TerserPlugin({})],
+  },
+  externals: {
+    react: 'react',
+    'react-dom' : 'react-dom'
+  },
+}
 };
