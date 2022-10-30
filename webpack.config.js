@@ -40,10 +40,6 @@ module.exports = (env) => {
   optimization: {
     minimize: env.production,
     minimizer: [new TerserPlugin({})],
-  },
-  externals: {
-    react: 'react',
-    'react-dom' : 'react-dom'
-  },
+  }
 }
 };
