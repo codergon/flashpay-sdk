@@ -28,9 +28,9 @@ module.exports = (env) => {
       stream: require.resolve("stream-browserify"),
     },
   },
-  mode: env.production ? "production": "development",
+  mode: 'production',
   output: {
-    filename: env.production ? "index.min.js" : "index.js",
+    filename: "index.min.js",
     path: path.resolve(__dirname, "build"),
     globalObject: "this",
     library: "FlashPay",
@@ -38,7 +38,7 @@ module.exports = (env) => {
     libraryTarget: "umd",
   },
   optimization: {
-    minimize: env.production,
+    minimize: true,
     minimizer: [new TerserPlugin({})],
   }
 }
