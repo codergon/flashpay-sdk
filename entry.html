@@ -3,6 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <title>ABCD</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <style>
+      body {
+        width: 100vw;
+      }
+    </style>
   </head>
   <body>
     <button id="btn-me">Paay!</button>
@@ -10,18 +20,18 @@
     <script>
       const btn = document.querySelector("#btn-me");
       btn.onclick = (e) => {
-        const fp = new window.FlashPay("mainnet");
+        const fp = new window.FlashPay("testnet");
         fp.setup(
           {
             asset: 0,
             recipient:
               "4PFBQOUG4AQPAIYEYOIVOOFCQXYUPVVW3UECD5MS3SEOM64LOWB5GFWDZM",
-            amount: "100",
+            amount: "1",
             txn_type: "normal",
           },
           "pk_test_19e91a5fff3797d4be08361ea990bb50feb330e2d3c7015f58e57805c5d615f9",
-          (res) => {
-            console.log(res);
+          (res, error) => {
+            if (!error) console.log(res);
           },
         );
       };

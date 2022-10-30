@@ -6,9 +6,11 @@
   "module": "dist/bundle.mjs",
   "typings": "dist/bundle.d.ts",
   "scripts": {
+    "start": "yarn run dev",
+    "dev": "yarn tsc -p ./tsconfig.build.json && webpack --mode development --config webpack.config.js --watch",
     "verify-format": "prettier --check lib/**",
     "format": "prettier --write lib/**",
-    "build": "yarn tsc -p ./tsconfig.build.json",
+    "build": "yarn tsc -p ./tsconfig.build.json && webpack",
     "webpack-build": "webpack"
   },
   "files": [
@@ -21,15 +23,25 @@
     "algosdk": "^1.20.0",
     "axios": "^0.27.2",
     "crypto-browserify": "^3.12.0",
+    "css-loader": "^6.7.1",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "stream-browserify": "^3.0.0"
+    "react-lottie": "^1.2.3",
+    "stream-browserify": "^3.0.0",
+    "style-loader": "^3.3.1"
   },
   "devDependencies": {
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@types/react-lottie": "^1.2.6",
+    "file-loader": "^6.2.0",
     "prettier": "^2.7.1",
+    "sass": "^1.55.0",
+    "sass-loader": "^13.1.0",
+    "terser-webpack-plugin": "^5.3.6",
     "ts-loader": "^9.3.1",
     "typescript": "^4.8.2",
-    "terser-webpack-plugin": "^5.3.6",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
   }
