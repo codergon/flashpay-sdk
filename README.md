@@ -24,7 +24,7 @@ The SDK Accepts the following parameters;
 
 | Param | Required | Description
 | :--- | :--- | :---
-| payload | `Yes` | An Object containing `asset`, `recipient`, `amount` and `txn_type`.
+| payload | `Yes` | An Object containing `asset`, `recipient`, and `amount`.
 | public_key | `Yes` | User's public key which can be gotten from the Flashpay dashboard.
 | callback | `Yes` | A function with signature (response, error) that gets called on successfull or failed transactions.
 
@@ -49,7 +49,6 @@ The SDK Accepts the following parameters;
                     asset: 1,
                     recipient: "F3SH3VWJTSRNZOZJWN4JWXYMNZOFW7Z5VNF7XGVN7QLXW7UNN4BL4BTSIA",
                     amount: "10",
-                    txn_type: "normal",
                 },
                 "pk_4cb89a0812efe844539f0a471dae33983946b3e4c39dfb0bc738495c2572f788",
                 (res, error) => {

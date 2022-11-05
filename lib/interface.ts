@@ -21,8 +21,6 @@ export interface IRequestData {
   asset: number;
   recipient: string;
   amount: string;
-  txn_type: "payment_link" | "normal";
-  payment_link?: string;
 }
 
 export interface IResponseData {

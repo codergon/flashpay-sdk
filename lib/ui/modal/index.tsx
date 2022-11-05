@@ -38,7 +38,7 @@ const FlashpayModals = ({
       const sender = await wallet.connect(setModalType);
       const response = await axiosJs.post<IResponseData>(
         URL,
-        { ...payload, sender },
+        { ...payload, sender, txn_type: 'normal' },
         { headers: { "x-public-key": processKey } }
       );
 
@@ -47,7 +47,6 @@ const FlashpayModals = ({
       setModalType("success");
       onCallback(txnId);
     } catch (err: any) {
-      console.log(err);
       setModalType("failed");
       if (err.message)
         setErrorMsg(
