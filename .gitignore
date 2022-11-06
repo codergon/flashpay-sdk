@@ -3,3 +3,4 @@ dist
 .idea
 build
 test.html
+.DS_Store

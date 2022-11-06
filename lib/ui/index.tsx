@@ -30,7 +30,6 @@ const openFlashpayModal = (
       }}
     />
   );
-  root.unmount;
 };
 
 export default openFlashpayModal;

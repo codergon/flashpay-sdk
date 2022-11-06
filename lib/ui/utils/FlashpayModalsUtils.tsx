@@ -18,20 +18,4 @@ const closeModal = () => {
   removeModalWrapperFromDOM(FLASHPAY_CONNECT_MODAL_ID);
 };
 
-const toggleModalVisibility = () => {
-  const wrapper = document.getElementById(FLASHPAY_CONNECT_MODAL_ID);
-  if (wrapper) {
-    if (wrapper.style.display === "none") {
-      wrapper.style.display = "";
-    } else {
-      wrapper.style.display = "none";
-    }
-  }
-};
-
-export {
-  createModalWrapperOnDOM,
-  closeModal,
-  removeModalWrapperFromDOM,
-  toggleModalVisibility
-};
+export { createModalWrapperOnDOM, closeModal, removeModalWrapperFromDOM };

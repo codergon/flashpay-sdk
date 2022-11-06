@@ -40,7 +40,7 @@ export class FlashPay {
   public async setup(payload: IRequestData, key: string, callback: callable) {
     const pk_network = key.startsWith("pk_test") ? "testnet" : "mainnet";
     if (pk_network !== this.network) {
-      callback("", new Error("API Key doesn't match specified network"))
+      callback("", new Error("API Key doesn't match specified network"));
     }
     openFlashpayModal(
       payload,

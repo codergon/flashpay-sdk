@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added README to show example usages of the SDK.
 
+### Changed
+- Migrated bundler from Webpack to Rollup.
+- Reduced bundle size from ~1.5MB to ~155KB.
+
 ## [0.1.0] - 2022-10-30
 ### Added
 - Support for PeraWallet & MyAlgoWallet for payments.

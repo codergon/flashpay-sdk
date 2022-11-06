@@ -1,3 +1,1 @@
-import { FlashPay } from "./main";
-
-export default FlashPay;
+export { FlashPay } from "./main";

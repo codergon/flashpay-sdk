@@ -31,7 +31,7 @@ export interface IResponseData {
 
 export interface IWallet {
   wallet: any;
-  connect(setModalType: any): Promise<string>;
+  connect(): Promise<string>;
   signTransaction(txn: any): Promise<string>;
   disconnect(): Promise<void>;
 }

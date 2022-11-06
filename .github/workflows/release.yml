@@ -73,7 +73,7 @@ jobs:
           name: FlashPay JS SDK ${{ env.RELEASE_VERSION }} -
           draft: true
           files: |
-            build/*
+            dist/*
 
   npm_publish:
     name: Publish to NPM

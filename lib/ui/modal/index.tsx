@@ -5,7 +5,7 @@ import {
   FlashpayModalsProps
 } from "../../interface";
 import React, { useState } from "react";
-import { MyAlgo, Pera } from "../../utils";
+import { MyAlgo, Pera } from "../../providers";
 import { URL } from "../../constants";
 import FlashpayWalletConnectModal from "./FlaspayWalletConnectModal";
 import FlashpayTxnSuccessModal from "./FlashpayTxnSuccessModal";
@@ -34,11 +34,13 @@ const FlashpayModals = ({
 
     if (wallet == null) return;
 
+    setModalType("processing");
+
     try {
-      const sender = await wallet.connect(setModalType);
+      const sender = await wallet.connect();
       const response = await axiosJs.post<IResponseData>(
         URL,
-        { ...payload, sender, txn_type: 'normal' },
+        { ...payload, sender, txn_type: "normal" },
         { headers: { "x-public-key": processKey } }
       );
 
