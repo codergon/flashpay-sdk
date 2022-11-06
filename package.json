@@ -2,7 +2,7 @@
   "name": "@flashpay-inc/sdk",
   "version": "0.1.0",
   "description": "A Typescript SDK for FlashPay Payment Integration",
-  "main": "build/index.js",
+  "main": "build/index.min.js",
   "types": "build/types",
   "scripts": {
     "dev": "yarn tsc -p ./tsconfig.json && webpack --mode development --watch",
