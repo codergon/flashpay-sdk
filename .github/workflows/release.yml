@@ -64,7 +64,7 @@ jobs:
           node-version: '16.x'
 
       - name: Build packages
-        run: npm ci && npm run build
+        run: npm i && npm run build
 
       - name: Upload to draft release
         uses: rotki/action-gh-release@v1
@@ -97,4 +97,4 @@ jobs:
       - name: Publish to NPM
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
-        run: npm ci && npm publish
+        run: npm publish
