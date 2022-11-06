@@ -1,32 +1,29 @@
+# Flashpay Javascript SDK
+
 <div align="center">
  <img width="400" valign="top" src="https://flashpay.finance/img/svg/logo.svg">
 </div>
 
-<h1 align="center">
-  <img width="60" valign="bottom" src="https://reactnative.dev/img/header_logo.svg" alt="ReactJS">
-   Flashpay
-</h1>
-
-# Flashpay Javascript SDK
-
 ## Get Started
 
-FlashPay Javascript SDK provides a simple and convenient payment flow for web applications to receive payments in USDC, ALGO and USDT on Algorand blockchain.
+FlashPay Javascript SDK provides a simple and convenient payment flow for web applications to receive payments in USDC, ALGO, USDT, etc. on Algorand blockchain.
 
 ## Install
 
 ```bash
-npm install flashpay-js-sdk
+npm install @flashpay-inc/sdk
 ```
 
 ## SDK Parameters
-The SDK Accepts the following parameters;
+The SDK accepts the following parameters:
 
 | Param | Required | Description
 | :--- | :--- | :---
-| payload | `Yes` | An Object containing `asset`, `recipient`, and `amount`.
-| public_key | `Yes` | User's public key which can be gotten from the Flashpay dashboard.
-| callback | `Yes` | A function with signature (response, error) that gets called on successfull or failed transactions.
+| payload | :white_check_mark: | An object containing `asset`, `recipient`, and `amount`.
+| public_key | :white_check_mark: | User's public key which can be gotten from the Flashpay dashboard.
+| callback | :white_check_mark: | A function with signature (response, error) that gets called on successful or failed transaction.
+
+**NOTE**: To get the list of supported assets, make a `GET` request to `https://api.flashpay.finance/api/core/assets`
 
 ## Usage
 ### HTML
@@ -50,7 +47,7 @@ The SDK Accepts the following parameters;
                     recipient: "F3SH3VWJTSRNZOZJWN4JWXYMNZOFW7Z5VNF7XGVN7QLXW7UNN4BL4BTSIA",
                     amount: "10",
                 },
-                "pk_4cb89a0812efe844539f0a471dae33983946b3e4c39dfb0bc738495c2572f788",
+                "<YOUR_PUBLIC_KEY>",
                 (res, error) => {
                     console.log(res);
                 },
